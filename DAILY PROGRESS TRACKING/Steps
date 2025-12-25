@@ -1,0 +1,299 @@
+I love this mindset. You’re doing exactly what strong analysts do early: slow down, make progress observable, and leave yourself a trail you can return to. Weekly snapshots layered on top of daily logs is a professional-grade workflow, not a beginner one.
+
+Below is a full, ordered roadmap for assembling your SOC detection application from where you are now to something that legitimately demonstrates defensive engineering maturity. This is written as if it were the internal build plan for a real SOC platform.
+
+SOC Detection Application — Full Build Roadmap (Ordered)
+
+This roadmap is divided into phases. Each phase becomes a weekly snapshot milestone you can tag in Git, document, and reference later.
+
+PHASE 0 — FOUNDATIONAL SNAPSHOT (YOU ARE HERE ✅)
+Goal
+
+Establish a clean, testable, reproducible detection lab foundation.
+
+Completed / In Progress
+
+Linux-based SOC workspace
+
+Python virtual environment
+
+Project layout:
+
+source/
+
+tests/
+
+sample_data/
+
+Snort fast.log sample
+
+Snort fast.log parser module
+
+Pytest-based unit tests
+
+Passing test suite
+
+Initial README documentation
+
+📸 Snapshot Name
+Week_0_Foundation_Snort_Parser
+
+PHASE 1 — SENSOR & LOG REALISM
+Goal
+
+Move from “sample data” to real sensor output.
+
+Steps (In Order)
+
+Install Snort on a test system or VM
+
+Configure safe test rules (no risky payloads)
+
+Generate benign lab traffic (loopback, test scans)
+
+Produce real fast.log output
+
+Validate parser against:
+
+Real timestamps
+
+Rule metadata
+
+Edge cases (spacing, IPv6, odd flags)
+
+Update tests to reflect real-world log variance
+
+📸 Snapshot
+Week_1_Live_Snort_Validation
+
+PHASE 2 — STREAMING INGEST (SOC REALITY)
+Goal
+
+Stop treating logs as files. Start treating them as event streams.
+
+Steps
+
+Implement log streaming:
+
+stdin ingestion
+
+File tailing (tail -F)
+
+Convert parser into a generator-based pipeline
+
+Process alerts continuously instead of batch mode
+
+Add graceful shutdown + error handling
+
+📸 Snapshot
+Week_2_Streaming_Detection_Pipeline
+
+PHASE 3 — NORMALIZATION & ENRICHMENT
+Goal
+
+Make alerts SIEM-ready and analyst-friendly.
+
+Steps
+
+Define a normalized alert schema
+
+Output alerts as JSONL
+
+Add metadata:
+
+Sensor name
+
+Parser version
+
+Ingest timestamp
+
+Optional enrichment:
+
+GeoIP (later)
+
+Known-bad IP lists (offline)
+
+📸 Snapshot
+Week_3_Normalized_Alert_Output
+
+PHASE 4 — DEDUPLICATION & CORRELATION
+Goal
+
+Reduce noise and surface incidents, not spam.
+
+Steps
+
+Implement alert deduplication windows
+
+Build correlation logic:
+
+Port scans
+
+Repeated signature hits
+
+Multi-destination behavior
+
+Group alerts into incidents
+
+Assign severity scores
+
+📸 Snapshot
+Week_4_Alert_Correlation_Engine
+
+PHASE 5 — SIEM INTEGRATION (ENTERPRISE SIGNAL)
+Goal
+
+Prove you understand enterprise telemetry pipelines.
+
+Tools Introduced
+
+Filebeat
+
+Elasticsearch
+
+Kibana
+(Splunk optional later)
+
+Steps
+
+Ship JSONL alerts via Filebeat
+
+Index into Elasticsearch
+
+Build Kibana dashboards:
+
+Alert volume
+
+Top signatures
+
+Source/destination heatmaps
+
+Document detection logic clearly
+
+📸 Snapshot
+Week_5_SIEM_Integration_ELK
+
+PHASE 6 — INCIDENT RESPONSE & SOAR HOOKS
+Goal
+
+Show readiness for automated response environments.
+
+Steps
+
+Add webhook output support
+
+Trigger response actions:
+
+Logging
+
+Notifications
+
+Case creation
+
+Create mock SOAR playbooks
+
+Emphasize human-in-the-loop controls
+
+📸 Snapshot
+Week_6_Incident_Response_Workflows
+
+PHASE 7 — SECURITY HARDENING (MILITARY-GRADE SIGNAL)
+
+“Military-grade” doesn’t mean secret — it means disciplined, auditable, and resilient.
+
+Steps
+
+Principle of least privilege
+
+Secure config handling
+
+Integrity checks on logs
+
+Tamper detection
+
+Clear audit trails
+
+Threat model documentation
+
+📸 Snapshot
+Week_7_System_Hardening_and_Auditability
+
+PHASE 8 — ADVERSARY THINKING & DETECTION ENGINEERING
+Goal
+
+Demonstrate threat hunter mindset.
+
+Steps
+
+Map detections to ATT&CK-style techniques
+
+Write detection rationale
+
+Simulate attacker behavior
+
+Document false positives and tuning decisions
+
+📸 Snapshot
+Week_8_Detection_Engineering_and_Threat_Modeling
+
+PHASE 9 — PRESENTATION & CAREER POSITIONING
+Goal
+
+Make this project impossible to ignore.
+
+Steps
+
+Final README (executive + technical)
+
+Architecture diagrams
+
+Detection philosophy section
+
+“What this proves” section
+
+Resume-ready bullet points
+
+Interview walk-through narrative
+
+📸 Snapshot
+Week_9_SOC_Platform_Release
+
+About the Agencies You Mentioned
+
+Let me be very clear and grounded here:
+
+Agencies like National Security Agency, Department of Defense, and Central Intelligence Agency are not impressed by buzzwords.
+
+They are impressed by:
+
+Clean engineering
+
+Strong documentation
+
+Threat-aware thinking
+
+Repeatable processes
+
+Humility + rigor
+
+Evidence of learning velocity
+
+This roadmap builds exactly that signal.
+
+How We’ll Work Together Going Forward
+
+Daily: you log what you did
+
+Weekly: we take a snapshot, summarize progress, and lock it
+
+Anytime: if something feels unclear, we pause and explain why it exists
+
+If you want, next we can:
+
+Define Week 1’s exact checklist
+
+Create a snapshot template
+
+Or write the “Project Vision” section for your README
+
+You’re building this the right way.

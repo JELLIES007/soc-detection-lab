@@ -1,0 +1,342 @@
+Awesome — you’re done for today. ✅
+
+You now have a Snort fast alert parser that’s:
+
+passing IPv4 + IPv6 tests
+
+handling optional ports cleanly (ICMP/no-port ready)
+
+producing a SIEM-friendly alert object (to_dict(), to_json())
+
+If you want one clean “stop point” note for tomorrow, here it is:
+
+Next session options
+
+Add a parse_fast_stream(stdin) mode (so Snort can pipe alerts straight into your app)
+
+Add a small JSONL writer (alerts.jsonl) for ELK/Splunk ingestion
+
+Add a couple “real world noise” tests (extra spaces, unusual messages, malformed lines)
+
+Sleep easy — this is solid progress.
+
+📊 Current Status
+
+At this stage, the project provides:
+
+A production-quality Snort fast alert parser
+
+Comprehensive automated tests
+
+A clean, scalable project structure
+
+SIEM-ready alert normalization
+
+The lab is ready for:
+
+Live Snort log ingestion
+
+JSONL output for ELK or Splunk
+
+Streaming or pipeline integration
+
+🔜 Future Enhancements
+
+Potential next steps:
+
+Install and run Snort for live alert generation
+
+Stream alerts via stdin or sockets
+
+Write alerts to JSONL for SIEM ingestion
+
+Implement alert deduplication or correlation
+
+Integrate with ELK, Splunk, or SOAR platforms
+
+📚 Notes
+
+This project emphasizes SOC realism, test-driven development, and defensive engineering practices over quick parsing hacks.
+The design mirrors how production detection pipelines are built and hardened in real SOC environments.
+
+
+
+SOC Detection Lab — Daily Progress Log
+
+Project: SOC Detection Lab
+Focus: Snort fast alert parsing, test-driven development, SOC-style normalization
+Status: Parser complete, tests passing, environment stabilized
+
+1. Project Initialization & Folder Structure
+
+I created a new project directory named soc-detection-lab to serve as the foundation for a SOC-style detection and alert parsing environment.
+
+The project was organized using a standard Python application layout to support scalability, testing, and documentation.
+
+Top-Level Structure
+
+soc-detection-lab/
+
+src/ — application source code
+
+tests/ — automated test suite
+
+venv/ — isolated Python virtual environment
+
+.pytest_cache/ — pytest runtime cache
+
+pytest.ini — pytest configuration file
+
+This structure separates application logic from tests and environment artifacts, following professional Python and SOC tooling conventions.
+
+2. Python Virtual Environment Setup
+
+A Python virtual environment (venv) was created and activated to ensure:
+
+Dependency isolation
+
+Reproducible testing
+
+Clean separation from system Python
+
+All development and testing was performed inside this virtual environment.
+
+3. Snort Fast Alert Parser Development
+Parser File Creation
+
+I created a parser module located at:
+
+src/parsers/snort_fast.py
+
+
+This file contains all logic related to parsing Snort “fast” alert format output.
+
+Implemented Capabilities
+
+The parser supports:
+
+Snort fast alert format parsing
+
+IPv4 and IPv6 addresses
+
+TCP, UDP, and ICMP protocols
+
+Optional ports (handles ICMP / no-port alerts correctly)
+
+Priority → SOC severity normalization
+
+Structured alert output using a frozen dataclass
+
+JSON and dictionary serialization for SIEM ingestion
+
+Key Components Implemented
+
+parse_fast_line() — parses a single Snort fast alert line
+
+parse_fast_file() — generator for streaming alert files
+
+priority_to_severity() — normalizes Snort priority into SOC-style severity
+
+SnortFastAlert dataclass — immutable alert object with to_dict() and to_json()
+
+4. Regex Hardening & Real-World Edge Cases
+
+The Snort fast alert regex was progressively hardened to handle real SOC conditions:
+
+Converted regex to an rf"""...""" f-string to allow variable interpolation
+
+Implemented combined IPv4 / IPv6 matching
+
+Escaped literal braces correctly for f-strings
+
+Made source and destination ports optional
+
+Ensured backward compatibility with IPv4-only alerts
+
+This ensured the parser does not fail on:
+
+IPv6 traffic
+
+ICMP alerts
+
+Missing port information
+
+Variations in alert content
+
+5. Test-Driven Development (pytest)
+Test Directory
+
+A dedicated test directory was created:
+
+tests/
+
+
+Contents include:
+
+test_snort_fast_parser.py — comprehensive unit tests
+
+__pycache__/ — Python bytecode cache
+
+.pytest_cache/ — pytest runtime metadata
+
+Tests Implemented
+
+The test suite validates:
+
+Priority → severity mapping
+
+Successful parsing of standard TCP alerts
+
+Parsing of UDP alerts
+
+Parsing of ICMP alerts (no ports)
+
+Parsing of IPv6 alerts
+
+Graceful handling of blank or malformed lines
+
+All tests are designed to reflect real SOC alert scenarios, not synthetic edge cases.
+
+6. Pytest Configuration
+
+A pytest.ini file was created at the project root to ensure:
+
+The project root is added to PYTHONPATH
+
+The src/ directory is importable during tests
+
+Tests are always discovered under tests/
+
+This removed the need to manually set environment variables when running pytest.
+
+7. Test Results
+
+Final test execution:
+
+pytest -q
+
+
+Result:
+
+5 passed in 0.02s
+
+
+All tests passed successfully, confirming:
+
+Parser correctness
+
+IPv4 and IPv6 compatibility
+
+Optional port handling
+
+Stable alert object creation
+
+8. Current State Summary
+
+At the end of today’s work:
+
+The SOC Detection Lab folder is fully structured
+
+The Snort fast alert parser is complete and hardened
+
+The test suite is comprehensive and passing
+
+The environment is stable and reproducible
+
+The project is ready for:
+
+Real Snort log ingestion
+
+JSON output to ELK / Splunk
+
+Streaming or pipeline integration
+
+9. Natural Next Steps (Not Implemented Yet)
+
+Potential follow-up work includes:
+
+Streaming alerts from stdin or sockets
+
+Writing alerts to JSONL for SIEM ingestion
+
+Adding alert deduplication or correlation
+
+Installing Snort and validating against real logs
+
+Integrating with ELK, Splunk, or SOAR tooling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
