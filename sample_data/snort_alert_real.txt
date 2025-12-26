@@ -1,0 +1,5 @@
+12/25-13:31:54.272251  [**] [1:1000001:1] SOC LAB TEST: ICMP Ping Detected [**] [Priority: 0] {ICMP} 8.8.8.8 -> 10.0.0.17
+12/25-16:11:37.070241  [**] [1:1000001:1] SOC LAB TEST: ICMP Ping Detected [**] [Priority: 0] {ICMP} 127.0.0.1 -> 127.0.0.1
+12/25-16:11:37.070241  [**] [1:528:5] BAD-TRAFFIC loopback traffic [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 127.0.0.1 -> 127.0.0.1
+12/25-16:11:37.070241  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 127.0.0.1 -> 127.0.0.1
+12/25-16:11:37.070260  [**] [1:1000001:1] SOC LAB TEST: ICMP Ping Detected [**] [Priority: 0] {ICMP} 127.0.0.1 -> 127.0.0.1
