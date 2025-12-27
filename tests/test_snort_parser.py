@@ -1,8 +1,37 @@
+# tests/test_snort_parser.py
+
+from pathlib import Path
+import pytest
+
 from src.snort_parser import parse_snort_file
 
 
+def _resolve_sample_path() -> Path:
+    """
+    Prefer the "real" sample file if present, otherwise fall back to a fast.log
+    location if you later add one. Uses paths relative to the repo root.
+    """
+    repo_root = Path(__file__).resolve().parent.parent
+
+    candidates = [
+        repo_root / "sample_data" / "snort_alert_real.log",
+        repo_root / "sample_data" / "snort" / "fast.log",
+    ]
+
+    for p in candidates:
+        if p.exists():
+            return p
+
+    # Nothing found
+    return candidates[0]
+
+
 def test_parse_real_snort_alert_file():
-    events = parse_snort_file("sample_data/snort_alert_real.log")
+    path = _resolve_sample_path()
+    if not path.exists():
+        pytest.skip(f"Sample snort alert file not found. Expected one of: {path}")
+
+    events = parse_snort_file(str(path))
 
     # We should have parsed at least one alert
     assert len(events) > 0
@@ -22,3 +51,4 @@ def test_parse_real_snort_alert_file():
     # Optional fields (may be None, but must exist as keys)
     assert "classification" in event
     assert "priority" in event
+

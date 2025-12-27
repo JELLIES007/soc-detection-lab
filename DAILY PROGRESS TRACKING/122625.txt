@@ -1,0 +1,11 @@
+## Results
+
+The detection pipeline successfully parsed and analyzed Snort alert logs, producing a SOC-style summary report.
+
+- Parsed 5 alert events from a real Snort alert file
+- Identified repeated activity from a single source IP (127.0.0.1), accounting for 80% of alerts
+- Classified alerts by severity based on Snort Priority fields
+- Grouped alerts by signature (GID:SID:REV) to highlight recurring detections
+- Detected a burst of 3 alerts from the same source IP within a 5-minute window, demonstrating basic correlation logic
+
+This workflow mirrors entry-level SOC alert triage and correlation processes.
