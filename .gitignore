@@ -22,4 +22,6 @@ Thumbs.db
 output/
 *.log
 EOF
+
+# Private notes
 DAILY_PROGRESS_TRACKING/
