@@ -22,3 +22,4 @@ Thumbs.db
 output/
 *.log
 EOF
+DAILY_PROGRESS_TRACKING/
